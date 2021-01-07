@@ -1,6 +1,6 @@
 {
   "name": "ctx-2d",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "canvas context-2d helper",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
@@ -9,6 +9,10 @@
     "canvas",
     "ctx"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelkor/ctx-2d.git"
+  },
   "author": "nelkor",
   "license": "MIT"
 }
