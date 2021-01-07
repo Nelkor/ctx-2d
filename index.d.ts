@@ -4,7 +4,7 @@ type CreateCtxOptions = {
 
 type CreateCtx = (
   parent: HTMLElement,
-  options: CreateCtxOptions,
+  options?: CreateCtxOptions,
 ) => CanvasRenderingContext2D
 
-declare const createCtx: CreateCtx
+export declare const createCtx: CreateCtx
