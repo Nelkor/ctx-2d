@@ -1,6 +1,6 @@
 {
   "name": "ctx-2d",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "canvas context-2d helper",
   "main": "dist/index.common.js",
   "module": "dist/index.esm.js",
