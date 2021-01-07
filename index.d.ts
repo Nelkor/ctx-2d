@@ -1,5 +1,11 @@
+type CanvasLimits = {
+  width: number
+  height: number
+}
+
 type CreateCtxOptions = {
   resizeCallback?(ctx: CanvasRenderingContext2D): void
+  limits?: CanvasLimits
 }
 
 type CreateCtx = (
