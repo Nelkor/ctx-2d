@@ -1,0 +1,14 @@
+{
+  "name": "ctx-2d",
+  "version": "1.0.0",
+  "description": "canvas context-2d helper",
+  "main": "dist/index.common.js",
+  "module": "dist/index.esm.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "canvas",
+    "ctx"
+  ],
+  "author": "nelkor",
+  "license": "MIT"
+}
