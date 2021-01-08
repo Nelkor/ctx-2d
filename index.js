@@ -14,7 +14,7 @@ export const createCtx = (parent, options = {}) => {
     ? options.limits.width / options.limits.height
     : null
 
-  const setResolution = () => {
+  const resize = () => {
     const width = parent.clientWidth
     const height = parent.clientHeight
 
@@ -30,10 +30,6 @@ export const createCtx = (parent, options = {}) => {
       canvas.width = width
       canvas.height = height
     }
-  }
-
-  const resize = () => {
-    setResolution()
 
     if (options.resizeCallback) {
       options.resizeCallback(ctx)
