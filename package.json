@@ -1,6 +1,6 @@
 {
   "name": "ctx-2d",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "canvas context-2d helper",
   "main": "index.js",
   "types": "index.d.ts",

@@ -13,14 +13,6 @@ npm i ctx-2d
 
 ## Подключение
 
-С применением CommonJS:
-
-```javascript
-const { createCtx } = require('ctx-2d');
-```
-
-С применением ES Modules:
-
 ```javascript
 import { createCtx } from 'ctx-2d';
 ```
@@ -32,4 +24,35 @@ import { createCtx } from 'ctx-2d';
 
 ```javascript
 const ctx = createCtx(document.body)
+```
+
+### Опции
+
+Если контексту надо задать глобальные настройки (они сбрасываются при смене разрешения), в функцию `createCtx`
+следует передать вторым объект с ключом `resizeCallback`. Эта функция принимает контекст и будет вызвана каждый раз
+после изменения разрешения:
+
+```javascript
+const options = {
+  resizeCallback(ctx) {
+    ctx.lineWidth = 9
+    ctx.strokeStyle = '#099'
+  },
+}
+
+const ctx = createCtx(document.body, options)
+```
+
+Полотну можно задать ограничение по высоте и ширине. Помимо ограничения, эта опция заставит `canvas` всегда
+иметь размер и разрешение в заданном соотношении сторон:
+
+```javascript
+const options = {
+  limits: {
+    width: 1024,
+    height: 768,
+  },
+}
+
+const ctx = createCtx(document.body, options)
 ```
