@@ -36,11 +36,11 @@ export const createCtx = (parent, options = {}) => {
     }
   }
 
-  resize()
-
   addEventListener('resize', resize)
 
   parent.appendChild(canvas)
+
+  requestAnimationFrame(resize)
 
   return ctx
 }
