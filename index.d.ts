@@ -9,7 +9,7 @@ type CreateCtxOptions = {
 }
 
 type CreateCtx = (
-  parent: HTMLElement,
+  parent: Element | null,
   options?: CreateCtxOptions,
 ) => CanvasRenderingContext2D
 
