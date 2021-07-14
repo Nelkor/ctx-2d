@@ -1,9 +1,9 @@
 /**
  * @type CreateCtx
  */
-export const createCtx = (parent, options = {}) => {
+export const createCtx = (options = {}, parent = null) => {
   const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
+  const context = canvas.getContext('2d')
 
   if (!options.limits) {
     canvas.style.width = '100%'
@@ -14,33 +14,39 @@ export const createCtx = (parent, options = {}) => {
     ? options.limits.width / options.limits.height
     : null
 
-  const resize = () => {
-    const width = parent.clientWidth
-    const height = parent.clientHeight
-
-    if (aspectRatio) {
-      if (width / height < aspectRatio) {
-        canvas.width = Math.min(width, options.limits.width)
-        canvas.height = canvas.width / aspectRatio
+  const setParent = parent => {
+    const resize = () => {
+      const width = parent.clientWidth
+      const height = parent.clientHeight
+  
+      if (aspectRatio) {
+        if (width / height < aspectRatio) {
+          canvas.width = Math.min(width, options.limits.width)
+          canvas.height = canvas.width / aspectRatio
+        } else {
+          canvas.height = Math.min(height, options.limits.height)
+          canvas.width = canvas.height * aspectRatio
+        }
       } else {
-        canvas.height = Math.min(height, options.limits.height)
-        canvas.width = canvas.height * aspectRatio
+        canvas.width = width
+        canvas.height = height
       }
-    } else {
-      canvas.width = width
-      canvas.height = height
+  
+      if (options.resizeCallback) {
+        options.resizeCallback(context)
+      }
     }
 
-    if (options.resizeCallback) {
-      options.resizeCallback(ctx)
-    }
+    addEventListener('resize', resize)
+
+    requestAnimationFrame(resize)
+
+    parent.appendChild(canvas)
   }
 
-  addEventListener('resize', resize)
+  if (parent) {
+    setParent(parent)
+  }
 
-  parent.appendChild(canvas)
-
-  requestAnimationFrame(resize)
-
-  return ctx
+  return { context, setParent }
 }

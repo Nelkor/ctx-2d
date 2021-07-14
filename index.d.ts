@@ -4,13 +4,16 @@ type CanvasLimits = {
 }
 
 type CreateCtxOptions = {
-  resizeCallback?(ctx: CanvasRenderingContext2D): void
+  resizeCallback?: (ctx: CanvasRenderingContext2D) => void
   limits?: CanvasLimits
 }
 
 type CreateCtx = (
-  parent: Element | null,
   options?: CreateCtxOptions,
-) => CanvasRenderingContext2D
+  parent?: Element | null,
+) => {
+  context: CanvasRenderingContext2D
+  setParent: (parent: Element | null) => void
+}
 
 export declare const createCtx: CreateCtx
